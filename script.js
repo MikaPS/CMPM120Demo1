@@ -25,8 +25,8 @@ class Introduction extends Phaser.Scene {
         this.imageObject.setAngle(140);
 
         this.textObject = this.add.text(
-            70, //x
-            40,//y
+            60, //x
+            10,//y
             "Preparing for takeoff...", //text
             {
                 fontFamily: 'CustomFont',
@@ -163,10 +163,10 @@ class Introduction extends Phaser.Scene {
             delay: 1700,
         });
         this.time.addEvent({
-            delay: 7550,
+            delay: 7150,
             loop: false,
             callback: () => {
-                this.scene.start("LoadingScreen");
+                this.scene.start("Video");
             }
         })
     }
@@ -175,6 +175,67 @@ class Introduction extends Phaser.Scene {
     update(){}
 }
 
+class Video extends Phaser.Scene {
+    constructor() {
+        super('Video');
+    }
+    
+    preload() {
+        this.load.video('video', './assets/video.mp4');
+    }  
+    
+    create() {
+        // Render rocket
+       this.videoObject = this.add.video(
+            400,//x
+            300,//y
+            'video',//imagename
+        )
+        this.videoObject.play(false);
+        this.textObject = this.add.text(
+            220, //x
+            100,//y
+            "CMPM 120!", //text
+            {
+                fontFamily: 'CustomFont',
+                color: "#ffffff",
+                fontSize: 80,
+            } //style
+        );
+        this.textObject2 = this.add.text(
+            100, //x
+            200,//y
+            "Game Development Experience", //text
+            {
+                fontFamily: 'CustomFont',
+                color: "#ffffff",
+                fontSize: 45
+            } //style
+        );
+        this.textObject.alpha = 0;
+        this.textObject2.alpha = 0;
+
+
+        this.tweens.add({
+            targets: [this.textObject, this.textObject2],
+            alpha: 1,
+            duration: 5000,
+            delay: 6500,
+            ease: 'Power2'
+        });
+
+        this.time.addEvent({
+            delay: 9950,
+            loop: false,
+            callback: () => {
+                this.scene.start("TitleScreen");
+            }
+        })
+    }
+
+    
+    update(){}
+}
 
 class LoadingScreen extends Phaser.Scene {
     constructor() {
@@ -182,8 +243,7 @@ class LoadingScreen extends Phaser.Scene {
     }
     
     preload() {
-        // this.load.path = './assets/';
-        // this.load.image('sectionimage', 'sectionimage.png');
+
     }  
     
     create() {
@@ -273,13 +333,13 @@ class LoadingScreen extends Phaser.Scene {
             } //style
         );
         this.textObject2 = this.add.text(
-            100, //x
+            20, //x
             350,//y
-            "Game Development Experience", //text
+            "You, the rocket, will be launched into the night sky", //text
             {
                 fontFamily: 'CustomFont',
                 color: "#cf5c15",
-                fontSize: 45
+                fontSize: 25
             } //style
         );
         this.textObject.alpha = 0;
@@ -293,13 +353,7 @@ class LoadingScreen extends Phaser.Scene {
             delay: 3000,
             ease: 'Power2'
         });
-        this.time.addEvent({
-            delay: 4550,
-            loop: false,
-            callback: () => {
-                this.scene.start("TitleScreen");
-            }
-        })
+       
     }
     
     update(){}
@@ -377,6 +431,14 @@ class TitleScreen extends Phaser.Scene {
                 fontSize: 30,
             } //style
         );
+
+        this.time.addEvent({
+            delay: 5550,
+            loop: false,
+            callback: () => {
+                this.scene.start("LoadingScreen");
+            }
+        })
         
     }
     
@@ -389,8 +451,8 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: 0x000000,
-    scene: [Introduction, LoadingScreen, TitleScreen],
-    // scene: [Introduction],
+    scene: [Introduction, Video, TitleScreen, LoadingScreen],
+    // scene: [Video],
 }
 let game = new Phaser.Game(config);
 
