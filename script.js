@@ -17,16 +17,16 @@ class Introduction extends Phaser.Scene {
     create() {
         // Render rocket
         this.imageObject = this.add.image(
-            200,//x
+            210,//x
             390,//y
             'rocket',//imagename
         )
-        this.imageObject.setScale(0.7) //resize
-        this.imageObject.setAngle(140);
+        this.imageObject.setScale(0.9) //resize
+        this.imageObject.setAngle(137);
 
         this.textObject = this.add.text(
-            60, //x
-            10,//y
+            70, //x
+            70,//y
             "Preparing for takeoff...", //text
             {
                 fontFamily: 'CustomFont',
@@ -34,16 +34,34 @@ class Introduction extends Phaser.Scene {
                 fontSize: 50,
             } //style
         );
+        this.textObject = this.add.text(
+            340, //x
+            120,//y
+            "Are you ready?", //text
+            {
+                fontFamily: 'Merriweather',
+                color: "#ffffff",
+                fontSize: 40,
+            } //style
+        );
+        this.graphics = this.add.graphics();
+        this.graphics.fillStyle(0xff0000, 1); // set the fill color to red
+        this.graphics.fillRect(70, 30, 700, 35); // draw a filled rectangle at (x, y) with the specified width and height
+        this.graphics.fillStyle(0xff8f26, 1); 
+        this.graphics.fillRect(600, 75, 170, 35);
+        this.graphics.fillStyle(0xffd761, 1); 
+        this.graphics.fillRect(600, 125, 170, 35);
+
         // TOP FIRE ANIMATION
         this.yellow1 = this.add.image(
-            70,//x
+            40,//x
             320,//y
             'fireyellow',//imagename
         )
         this.yellow1.setScale(0.15) //resize
         this.yellow1.setAngle(-70);
         this.orange1 = this.add.image(
-            70,//x
+            40,//x
             320,//y
             'fireorange',//imagename
         )
@@ -58,7 +76,7 @@ class Introduction extends Phaser.Scene {
             ease: 'Power2'
         });
         this.red1 = this.add.image(
-            70,//x
+            40,//x
             320,//y
             'firered',//imagename
         )
@@ -74,14 +92,14 @@ class Introduction extends Phaser.Scene {
         });
         // MIDDLE FIRE ANIMATION
         this.yellow2 = this.add.image(
-            75,//x
+            50,//x
             390,//y
             'fireyellow',//imagename
         )
         this.yellow2.setScale(0.15) //resize
         this.yellow2.setAngle(-90);
         this.orange2 = this.add.image(
-            75,//x
+            50,//x
             390,//y
             'fireorange',//imagename
         )
@@ -96,7 +114,7 @@ class Introduction extends Phaser.Scene {
             ease: 'Power2'
         });
         this.red2 = this.add.image(
-            75,//x
+            50,//x
             390,//y
             'firered',//imagename
         )
@@ -112,14 +130,14 @@ class Introduction extends Phaser.Scene {
         });
        // BOTTOM FIRE ANIMATION
        this.yellow3 = this.add.image(
-            70,//x
+            40,//x
             460,//y
             'fireyellow',//imagename
         )
         this.yellow3.setScale(0.15) //resize
         this.yellow3.setAngle(-110);
         this.orange3 = this.add.image(
-            70,//x
+            40,//x
             460,//y
             'fireorange',//imagename
         )
@@ -134,7 +152,7 @@ class Introduction extends Phaser.Scene {
             ease: 'Power2'
         });
         this.red3 = this.add.image(
-            70,//x
+            40,//x
             460,//y
             'firered',//imagename
         )
@@ -163,12 +181,14 @@ class Introduction extends Phaser.Scene {
             delay: 1700,
         });
         this.time.addEvent({
-            delay: 7150,
+            delay: 7100,
             loop: false,
             callback: () => {
                 this.scene.start("Video");
             }
         })
+
+        
     }
 
     
@@ -185,6 +205,19 @@ class Video extends Phaser.Scene {
     }  
     
     create() {
+        // Create a camera object
+        var camera = this.cameras.main;
+
+        // Start the camera at position x = 0
+        camera.scrollX =800;
+
+        // Tween the camera to move to the right over 2 seconds
+        this.tweens.add({
+            targets: camera,
+            scrollX: 0, // move the camera 1000 pixels to the right
+            duration: 2000, // 2 seconds
+            ease: 'Power2',
+        });
         // Render rocket
        this.videoObject = this.add.video(
             400,//x
@@ -223,9 +256,17 @@ class Video extends Phaser.Scene {
             delay: 6500,
             ease: 'Power2'
         });
+        
+        this.time.addEvent({
+            delay: 9850,
+            loop: false,
+            callback: () => {
+                this.cameras.main.fadeOut(2000);
+            }
+        })
 
         this.time.addEvent({
-            delay: 9950,
+            delay: 11100,
             loop: false,
             callback: () => {
                 this.scene.start("TitleScreen");
@@ -323,23 +364,23 @@ class LoadingScreen extends Phaser.Scene {
             });
         }
         this.textObject = this.add.text(
-            220, //x
+            20, //x
             250,//y
-            "CMPM 120!", //text
+            "You, the rocket, will be launched into the night sky", //text
             {
                 fontFamily: 'CustomFont',
                 color: "#cf1515",
-                fontSize: 80,
+                fontSize: 30,
             } //style
         );
         this.textObject2 = this.add.text(
             20, //x
             350,//y
-            "You, the rocket, will be launched into the night sky", //text
+            "You know what you will need to do…\nDon’t make us regret choosing you for the mission\nYou know what will happen if you mess up", //text
             {
-                fontFamily: 'CustomFont',
-                color: "#cf5c15",
-                fontSize: 25
+                fontFamily: 'Merriweather',
+                color: "#ffffff",
+                fontSize: 30
             } //style
         );
         this.textObject.alpha = 0;
@@ -370,9 +411,7 @@ class TitleScreen extends Phaser.Scene {
     }  
     
     create() {
-        // Create a group to hold the stars
-        this.graphics = this.add.graphics();
-        
+        this.cameras.main.fadeIn(2000);
 
         //create image object 
         this.imageObject = this.add.image(
@@ -433,7 +472,7 @@ class TitleScreen extends Phaser.Scene {
         );
 
         this.time.addEvent({
-            delay: 5550,
+            delay: 3550,
             loop: false,
             callback: () => {
                 this.scene.start("LoadingScreen");
