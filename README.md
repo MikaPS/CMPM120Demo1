@@ -23,5 +23,5 @@ A cinametic animation based on Phaser3 (JavaScript)
 
 *Citations:*
 - Rocket image: found from a website that has public domain pictures. https://clipartix.com/rocket-clipart-image-11846/. Changed the thickness of the window and added some lines at the top of the rocket. Also, changed to transparent background.
-- Fire image: https://howtodraweasy.net/how-to-draw-fire-for-kids/. Took a black and white image and recolored it.
+- Fire image: Image by <a href="https://pixabay.com/users/królestwo_nauki-17664295/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6904983">Królestwo_Nauki</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6904983">Pixabay</a>. Recolored the picture.
 - Pricedown font: https://www.1001fonts.com/pricedown-font.html. Based on the website, "This font includes a license that allows free commercial use: sometimes referred to as a desktop license."
