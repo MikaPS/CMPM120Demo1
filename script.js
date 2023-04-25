@@ -435,14 +435,7 @@ class TitleScreen extends Phaser.Scene {
                 fontWeight: 'bold'
             } //style
         );
-        this.tweens.add({
-            targets: [this.textObject2],
-            alpha: 0,
-            duration: 2000,
-            delay: 1600,
-            yoyo: true,
-            ease: 'Power2'
-        });
+        
         this.textObject3 = this.add.text(
             35, //x
             462,//y
@@ -453,7 +446,13 @@ class TitleScreen extends Phaser.Scene {
                 fontSize: 30,
             } //style
         );
-
+        this.tweens.add({
+            targets: [this.textObject3],
+            alpha: 0,
+            duration: 2000,
+            delay: 1600,
+            ease: 'Power2'
+        });
        
 
         this.time.addEvent({
