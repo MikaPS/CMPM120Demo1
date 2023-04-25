@@ -8,6 +8,8 @@ A cinametic animation based on Phaser3 (JavaScript)
     Third scene: game menu with a moon picture and name of game (rocket). <br>
     Fourth scene: star transition into beginning of the game. <br>
 - **2+ audio assets**:<br>
+    Rocket launch: Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=76003">Pixabay</a>. I cut the 27 seconds video into a 3 seconds one.
+    Space background music: Sound Effect by <a href="https://pixabay.com/users/samuelfrancisjohnson-1207793/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=106826">SamuelFrancisJohnson</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=106826">Pixabay</a>. Added a 1 second fade-in and half a second fade-out. Cut the audio down to 24 seconds.
 - **2+ image assets**:<br>
     Rocket picture, fire pictures (yellow, orange, and red), moon picture, logo of game (cloudy games).<br>
 - **2+ geometric shapes**:<br>
