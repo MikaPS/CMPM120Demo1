@@ -202,7 +202,8 @@ class Video extends Phaser.Scene {
     
     preload() {
         this.load.video('video', './assets/video.mp4');
-    }  
+        this.load.image('cloud', './assets/cloudygames.png');
+    }    
     
     create() {
         // Create a camera object
@@ -225,35 +226,18 @@ class Video extends Phaser.Scene {
             'video',//imagename
         )
         this.videoObject.play(false);
-        this.textObject = this.add.text(
-            220, //x
-            100,//y
-            "CMPM 120!", //text
-            {
-                fontFamily: 'CustomFont',
-                color: "#ffffff",
-                fontSize: 80,
-            } //style
-        );
-        this.textObject2 = this.add.text(
-            100, //x
-            200,//y
-            "Game Development Experience", //text
-            {
-                fontFamily: 'CustomFont',
-                color: "#ffffff",
-                fontSize: 45
-            } //style
-        );
-        this.textObject.alpha = 0;
-        this.textObject2.alpha = 0;
-
+        this.imageObject = this.add.image(
+            400,//x
+            300,//y
+            'cloud',//imagename
+        )
+        this.imageObject.alpha = 0;
 
         this.tweens.add({
-            targets: [this.textObject, this.textObject2],
+            targets: [this.imageObject],
             alpha: 1,
-            duration: 5000,
-            delay: 6500,
+            duration: 2000,
+            delay: 6700,
             ease: 'Power2'
         });
         
@@ -448,22 +432,21 @@ class TitleScreen extends Phaser.Scene {
                 fontFamily: 'Merriweather',
                 color: "#ffffff",
                 fontSize: 30,
+                fontWeight: 'bold'
             } //style
         );
+        this.tweens.add({
+            targets: [this.textObject2],
+            alpha: 0,
+            duration: 2000,
+            delay: 1600,
+            yoyo: true,
+            ease: 'Power2'
+        });
         this.textObject3 = this.add.text(
             35, //x
-            470,//y
-            "OPTIONS", //text
-            {
-                fontFamily: 'Merriweather',
-                color: "#ffffff",
-                fontSize: 30,
-            } //style
-        );
-        this.textObject4 = this.add.text(
-            35, //x
-            510,//y
-            "QUIT", //text
+            462,//y
+            "OPTIONS\nQUIT", //text
             {
                 fontFamily: 'Merriweather',
                 color: "#ffffff",
@@ -471,8 +454,10 @@ class TitleScreen extends Phaser.Scene {
             } //style
         );
 
+       
+
         this.time.addEvent({
-            delay: 3550,
+            delay: 3350,
             loop: false,
             callback: () => {
                 this.scene.start("LoadingScreen");
