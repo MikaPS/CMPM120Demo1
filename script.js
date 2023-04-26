@@ -394,24 +394,22 @@ class LoadingScreen extends Phaser.Scene {
             });
         }
         this.textObject = this.add.text(
-            100, //x
-            90,//y
+            100, 90,
             "You,\n\n\t\t\t\tthe ROCKET,\n\nwill be launched into the night sky", //text
             {
                 fontFamily: 'CustomFont',
-                color: "#cf1515",
+                color: "#fc5a44",
                 fontSize: 40,
             } //style
         );
         this.textObject2 = this.add.text(
-            100, //x
-            320,//y
+            100, 320,
             "You know what you will need to do…\n\nDon’t make us regret choosing you for the mission\n\nYou know what will happen if you mess up", //text
             {
                 fontFamily: 'Merriweather',
                 color: "#ffffff",
                 fontSize: 30
-            } //style
+            } 
         );
         this.textObject.alpha = 0;
         this.textObject2.alpha = 0;
@@ -433,8 +431,8 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: 0x000000,
-    // scene: [Introduction, Video, TitleScreen, LoadingScreen],
-    scene: [LoadingScreen],
+    scene: [Introduction, Video, TitleScreen, LoadingScreen],
+    // scene: [LoadingScreen],
 }
 let game = new Phaser.Game(config);
 

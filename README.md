@@ -26,6 +26,8 @@ A cinametic animation based on Phaser3 (JavaScript)
 - **1+ object motion animation**:<br>
     In the first scene, rocket and fires move to the right side of the screen. In the last scene, have 100+ stars moving from their original position to random positions off the screen.
 
-*Citations:*
-- Rest of citations can be found above. 
-- Pricedown font: https://www.1001fonts.com/pricedown-font.html. Based on the website, "This font includes a license that allows free commercial use: sometimes referred to as a desktop license."
+Extra credit:
+- **Custom Font**:<br>
+    Pricedown font: https://www.1001fonts.com/pricedown-font.html. Based on the website, "This font includes a license that allows free commercial use: sometimes referred to as a desktop license." <br>
+- **Video**: <br>
+    I created a black and white design on google slides, then added colors on mobile app ibisPaint X, and then added fade in effects between each picture using the mobile app iMovie.
