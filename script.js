@@ -205,12 +205,15 @@ class Video extends Phaser.Scene {
             duration: 2000, // 2 seconds
             ease: 'Power2',
         });
+
         // Includes video
         this.videoObject = this.add.video(
             400,300,'video',
         )
+        this.videoObject.setPlaybackRate(1.7);
         this.videoObject.play(false);
         this.videoObject.autoplay = true; // autoplays
+        
         // The logotype image starts with alpha=0, and after the video ends it fades in
         this.imageObject = this.add.image(
             400,300,'cloud',
@@ -220,7 +223,7 @@ class Video extends Phaser.Scene {
             targets: [this.imageObject],
             alpha: 1,
             duration: 2000,
-            delay: 6700,
+            delay: 3800,
             ease: 'Power2',
             // Fade out effect
             onComplete: () => {
@@ -230,7 +233,7 @@ class Video extends Phaser.Scene {
         
         // Moves to next scene after fading out
         this.time.addEvent({
-            delay: 11100,
+            delay: 7800,
             loop: false,
             callback: () => {
                 this.scene.start("TitleScreen");
@@ -253,7 +256,7 @@ class TitleScreen extends Phaser.Scene {
     }  
     
     create() {
-        this.cameras.main.fadeIn(2000);
+        this.cameras.main.fadeIn(1000);
 
         //create image object 
         this.imageObject = this.add.image(
@@ -418,7 +421,16 @@ class LoadingScreen extends Phaser.Scene {
             alpha: 1,
             duration: 5000,
             delay: 3000,
-            ease: 'Power2'
+            ease: 'Power2',
+            onComplete: () => {
+                this.time.addEvent({
+                    delay: 800,
+                    loop: false,
+                    callback: () => {
+                        this.scene.start("Introduction");
+                    }
+                })  
+            }
         });
        
     }
@@ -432,7 +444,7 @@ let config = {
     height: 600,
     backgroundColor: 0x000000,
     scene: [Introduction, Video, TitleScreen, LoadingScreen],
-    // scene: [LoadingScreen],
+    // scene: [Introduction,Video],
 }
 let game = new Phaser.Game(config);
 
