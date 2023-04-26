@@ -366,23 +366,23 @@ class LoadingScreen extends Phaser.Scene {
             xCoord += 60;
             // Creates a tweens to move the star off-screen in a random direction
             // Either random Y on screen and X is offscreen or the opposite
-            let offscreenX = 0; Phaser.Math.Between(-100, this.cameras.main.width + 100);
+            let offscreenX = 0;
             let offscreenY = 0;
             if (count == 0) { 
-                offscreenX = Phaser.Math.Between(-100, this.cameras.main.width + 100);
-                offscreenY = Phaser.Math.Between(-100, -50);
+                offscreenX = Phaser.Math.Between(-20, this.cameras.main.width + 20);
+                offscreenY = Phaser.Math.Between(0, 20);
                 count += 1;
             } else if (count == 1)  {
-                offscreenX = Phaser.Math.Between(-100, this.cameras.main.width + 100);
-                offscreenY = Phaser.Math.Between(650, 700);
+                offscreenX = Phaser.Math.Between(-20, this.cameras.main.width + 20);
+                offscreenY = Phaser.Math.Between(580, 600);
                 count += 1;
             } else if (count == 2)  {
-                offscreenX = Phaser.Math.Between(-100,-50);
-                offscreenY = Phaser.Math.Between(-100, this.cameras.main.height + 100);
+                offscreenX = Phaser.Math.Between(0, 20);
+                offscreenY = Phaser.Math.Between(-20, this.cameras.main.height + 20);
                 count += 1;
             } else {
-                offscreenX = Phaser.Math.Between(850,900);
-                offscreenY = Phaser.Math.Between(-100, this.cameras.main.height + 100);
+                offscreenX = Phaser.Math.Between(780,800);
+                offscreenY = Phaser.Math.Between(-20, this.cameras.main.height + 20);
                 count = 0;
             }
             let tween = this.tweens.add({
@@ -394,19 +394,19 @@ class LoadingScreen extends Phaser.Scene {
             });
         }
         this.textObject = this.add.text(
-            50, //x
-            150,//y
-            "You, the rocket, will be launched into the night sky", //text
+            100, //x
+            90,//y
+            "You,\n\n\t\t\t\tthe ROCKET,\n\nwill be launched into the night sky", //text
             {
                 fontFamily: 'CustomFont',
                 color: "#cf1515",
-                fontSize: 32,
+                fontSize: 40,
             } //style
         );
         this.textObject2 = this.add.text(
-            50, //x
-            250,//y
-            "You know what you will need to do…\n\n\t\t\tDon’t make us regret choosing you for the mission\n\n\t\t\t\tYou know what will happen if you mess up", //text
+            100, //x
+            320,//y
+            "You know what you will need to do…\n\nDon’t make us regret choosing you for the mission\n\nYou know what will happen if you mess up", //text
             {
                 fontFamily: 'Merriweather',
                 color: "#ffffff",
@@ -433,8 +433,8 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: 0x000000,
-    scene: [Introduction, Video, TitleScreen, LoadingScreen],
-    // scene: [Introduction],
+    // scene: [Introduction, Video, TitleScreen, LoadingScreen],
+    scene: [LoadingScreen],
 }
 let game = new Phaser.Game(config);
 
