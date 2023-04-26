@@ -6,15 +6,23 @@ class Introduction extends Phaser.Scene {
     preload() {
         this.load.path = './assets/';
         this.load.image('rocket', 'rocket.png');
-        this.load.path = './assets/';
+        // this.load.path = './assets/';
         this.load.image('firered', 'firered.png');
-        this.load.path = './assets/';
+        // this.load.path = './assets/';
         this.load.image('fireorange', 'fireorange.png');
-        this.load.path = './assets/';
         this.load.image('fireyellow', 'fireyellow.png');
+        this.load.audio('rocket', 'rocketSound.mp3');
     }  
     
     create() {
+        // // create an audio object
+        // var audio = this.sound.add('rocket');
+        // // play the audio with a delay of 2 seconds
+        // audio.play({
+        //     delay: 1000,
+        // });
+        this.sound.play('rocket');
+
         // Render rocket
         this.imageObject = this.add.image(
             210,//x
@@ -180,6 +188,9 @@ class Introduction extends Phaser.Scene {
             duration: 5000,
             delay: 1700,
         });
+
+
+
         this.time.addEvent({
             delay: 7100,
             loop: false,
@@ -203,9 +214,11 @@ class Video extends Phaser.Scene {
     preload() {
         this.load.video('video', './assets/video.mp4');
         this.load.image('cloud', './assets/cloudygames.png');
+        this.load.audio('space', './assets/spaceS.mp3');
     }    
     
     create() {
+        this.sound.play('space', { loop: true });
         // Create a camera object
         var camera = this.cameras.main;
 
@@ -348,19 +361,19 @@ class LoadingScreen extends Phaser.Scene {
             });
         }
         this.textObject = this.add.text(
-            20, //x
-            250,//y
+            50, //x
+            150,//y
             "You, the rocket, will be launched into the night sky", //text
             {
                 fontFamily: 'CustomFont',
                 color: "#cf1515",
-                fontSize: 30,
+                fontSize: 32,
             } //style
         );
         this.textObject2 = this.add.text(
-            20, //x
-            350,//y
-            "You know what you will need to do…\nDon’t make us regret choosing you for the mission\nYou know what will happen if you mess up", //text
+            50, //x
+            250,//y
+            "You know what you will need to do…\n\n\t\t\tDon’t make us regret choosing you for the mission\n\n\t\t\t\tYou know what will happen if you mess up", //text
             {
                 fontFamily: 'Merriweather',
                 color: "#ffffff",
@@ -475,7 +488,7 @@ let config = {
     height: 600,
     backgroundColor: 0x000000,
     scene: [Introduction, Video, TitleScreen, LoadingScreen],
-    // scene: [Video],
+    // scene: [Introduction],
 }
 let game = new Phaser.Game(config);
 
