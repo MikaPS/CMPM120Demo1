@@ -12,17 +12,21 @@ class Introduction extends Phaser.Scene {
         this.load.image('fireorange', 'fireorange.png');
         this.load.image('fireyellow', 'fireyellow.png');
         this.load.audio('rocket', 'rocketSound.mp3');
+        this.load.audio('space', 'spaceS.mp3');
+
     }  
     
     create() {
-        // // create an audio object
-        // var audio = this.sound.add('rocket');
-        // // play the audio with a delay of 2 seconds
-        // audio.play({
-        //     delay: 1000,
-        // });
-        this.sound.play('rocket');
-
+        this.graphics = this.add.graphics();
+        this.graphics.fillStyle(0xff0000, 1); // set the fill color to red
+        this.graphics.fillRect(70, 30, 700, 35); // draw a filled rectangle at (x, y) with the specified width and height
+        this.graphics.fillStyle(0xff8f26, 1); 
+        this.graphics.fillRect(600, 75, 170, 35);
+        this.graphics.fillStyle(0xffd761, 1); 
+        this.graphics.fillRect(600, 125, 170, 35);
+        this.sound.play('space', { loop: true });
+        // create an audio object
+        
         // Render rocket
         this.imageObject = this.add.image(
             210,//x
@@ -43,163 +47,156 @@ class Introduction extends Phaser.Scene {
             } //style
         );
         this.textObject = this.add.text(
-            340, //x
+            180, //x
             120,//y
-            "Are you ready?", //text
+            "Are you ready? Click to start", //text
             {
                 fontFamily: 'Merriweather',
                 color: "#ffffff",
-                fontSize: 40,
+                fontSize: 35,
             } //style
         );
-        this.graphics = this.add.graphics();
-        this.graphics.fillStyle(0xff0000, 1); // set the fill color to red
-        this.graphics.fillRect(70, 30, 700, 35); // draw a filled rectangle at (x, y) with the specified width and height
-        this.graphics.fillStyle(0xff8f26, 1); 
-        this.graphics.fillRect(600, 75, 170, 35);
-        this.graphics.fillStyle(0xffd761, 1); 
-        this.graphics.fillRect(600, 125, 170, 35);
+       
+       
+        // make the text object interactive
+        this.textObject.setInteractive();
+        // add a pointerdown event listener to the text object
+        this.textObject.on('pointerdown', function () {
+            // start your game or do any action you want here
+            this.sound.play('rocket');
+            // TOP FIRE ANIMATION
+            this.yellow1 = this.add.image(
+                40,//x
+                320,//y
+                'fireyellow',//imagename
+            )
+            this.yellow1.setScale(0.15) //resize
+            this.yellow1.setAngle(-70);
+            this.orange1 = this.add.image(
+                40,//x
+                320,//y
+                'fireorange',//imagename
+            )
+            this.orange1.setScale(0.15) //resize
+            this.orange1.setAngle(-70);
+            this.orange1.alpha = 0;
+            this.tweens.add({
+                targets: this.orange1,
+                alpha: 1,
+                duration: 5000,
+                delay: 200,
+                ease: 'Power2'
+            });
+            this.red1 = this.add.image(
+                40,//x
+                320,//y
+                'firered',//imagename
+            )
+            this.red1.setScale(0.15) //resize
+            this.red1.setAngle(-70);
+            this.red1.alpha = 0;
+            this.tweens.add({
+                targets: this.red1,
+                alpha: 1,
+                duration: 5000,
+                delay: 550,
+                ease: 'Power2'
+            });
+            // MIDDLE FIRE ANIMATION
+            this.yellow2 = this.add.image(
+                50,//x
+                390,//y
+                'fireyellow',//imagename
+            )
+            this.yellow2.setScale(0.15) //resize
+            this.yellow2.setAngle(-90);
+            this.orange2 = this.add.image(
+                50,//x
+                390,//y
+                'fireorange',//imagename
+            )
+            this.orange2.setScale(0.15) //resize
+            this.orange2.setAngle(-90);
+            this.orange2.alpha = 0;
+            this.tweens.add({
+                targets: this.orange2,
+                alpha: 1,
+                duration: 5000,
+                delay: 200,
+                ease: 'Power2'
+            });
+            this.red2 = this.add.image(
+                50,//x
+                390,//y
+                'firered',//imagename
+            )
+            this.red2.setScale(0.15) //resize
+            this.red2.setAngle(-90);
+            this.red2.alpha = 0;
+            this.tweens.add({
+                targets: this.red2,
+                alpha: 1,
+                duration: 5000,
+                delay: 550,
+                ease: 'Power2'
+            });
+        // BOTTOM FIRE ANIMATION
+        this.yellow3 = this.add.image(
+                40,//x
+                460,//y
+                'fireyellow',//imagename
+            )
+            this.yellow3.setScale(0.15) //resize
+            this.yellow3.setAngle(-110);
+            this.orange3 = this.add.image(
+                40,//x
+                460,//y
+                'fireorange',//imagename
+            )
+            this.orange3.setScale(0.15) //resize
+            this.orange3.setAngle(-110);
+            this.orange3.alpha = 0;
+            this.tweens.add({
+                targets: this.orange3,
+                alpha: 1,
+                duration: 5000,
+                delay: 200,
+                ease: 'Power2'
+            });
+            this.red3 = this.add.image(
+                40,//x
+                460,//y
+                'firered',//imagename
+            )
+            this.red3.setScale(0.15) //resize
+            this.red3.setAngle(-110);
+            this.red3.alpha = 0;
+            this.tweens.add({
+                targets: this.red3,
+                alpha: 1,
+                duration: 5000,
+                delay: 550,
+                ease: 'Power2'
+            });
 
-        // TOP FIRE ANIMATION
-        this.yellow1 = this.add.image(
-            40,//x
-            320,//y
-            'fireyellow',//imagename
-        )
-        this.yellow1.setScale(0.15) //resize
-        this.yellow1.setAngle(-70);
-        this.orange1 = this.add.image(
-            40,//x
-            320,//y
-            'fireorange',//imagename
-        )
-        this.orange1.setScale(0.15) //resize
-        this.orange1.setAngle(-70);
-        this.orange1.alpha = 0;
-        this.tweens.add({
-            targets: this.orange1,
-            alpha: 1,
-            duration: 5000,
-            delay: 200,
-            ease: 'Power2'
-        });
-        this.red1 = this.add.image(
-            40,//x
-            320,//y
-            'firered',//imagename
-        )
-        this.red1.setScale(0.15) //resize
-        this.red1.setAngle(-70);
-        this.red1.alpha = 0;
-        this.tweens.add({
-            targets: this.red1,
-            alpha: 1,
-            duration: 5000,
-            delay: 550,
-            ease: 'Power2'
-        });
-        // MIDDLE FIRE ANIMATION
-        this.yellow2 = this.add.image(
-            50,//x
-            390,//y
-            'fireyellow',//imagename
-        )
-        this.yellow2.setScale(0.15) //resize
-        this.yellow2.setAngle(-90);
-        this.orange2 = this.add.image(
-            50,//x
-            390,//y
-            'fireorange',//imagename
-        )
-        this.orange2.setScale(0.15) //resize
-        this.orange2.setAngle(-90);
-        this.orange2.alpha = 0;
-        this.tweens.add({
-            targets: this.orange2,
-            alpha: 1,
-            duration: 5000,
-            delay: 200,
-            ease: 'Power2'
-        });
-        this.red2 = this.add.image(
-            50,//x
-            390,//y
-            'firered',//imagename
-        )
-        this.red2.setScale(0.15) //resize
-        this.red2.setAngle(-90);
-        this.red2.alpha = 0;
-        this.tweens.add({
-            targets: this.red2,
-            alpha: 1,
-            duration: 5000,
-            delay: 550,
-            ease: 'Power2'
-        });
-       // BOTTOM FIRE ANIMATION
-       this.yellow3 = this.add.image(
-            40,//x
-            460,//y
-            'fireyellow',//imagename
-        )
-        this.yellow3.setScale(0.15) //resize
-        this.yellow3.setAngle(-110);
-        this.orange3 = this.add.image(
-            40,//x
-            460,//y
-            'fireorange',//imagename
-        )
-        this.orange3.setScale(0.15) //resize
-        this.orange3.setAngle(-110);
-        this.orange3.alpha = 0;
-        this.tweens.add({
-            targets: this.orange3,
-            alpha: 1,
-            duration: 5000,
-            delay: 200,
-            ease: 'Power2'
-        });
-        this.red3 = this.add.image(
-            40,//x
-            460,//y
-            'firered',//imagename
-        )
-        this.red3.setScale(0.15) //resize
-        this.red3.setAngle(-110);
-        this.red3.alpha = 0;
-        this.tweens.add({
-            targets: this.red3,
-            alpha: 1,
-            duration: 5000,
-            delay: 550,
-            ease: 'Power2'
-        });
+            this.tweens.add({
+                targets: [this.yellow1, this.yellow2, this.yellow3, this.orange1, this.orange2, this.orange3, this.red1, this.red2, this.red3],
+                x: 1000,
+                duration: 5900,
+                delay: 1700,
+                ease: 'Linear'
+            });
+            this.tweens.add({
+                targets: this.imageObject,
+                x: 1000,
+                duration: 5000,
+                delay: 1700,
+                onComplete: () => {
+                    this.scene.start("Video");
+                }
+            });
+            }, this);
 
-        this.tweens.add({
-            targets: [this.yellow1, this.yellow2, this.yellow3, this.orange1, this.orange2, this.orange3, this.red1, this.red2, this.red3],
-            x: 1000,
-            duration: 5900,
-            delay: 1700,
-            ease: 'Linear'
-        });
-        this.tweens.add({
-            targets: this.imageObject,
-            x: 1000,
-            duration: 5000,
-            delay: 1700,
-        });
-
-
-
-        this.time.addEvent({
-            delay: 7100,
-            loop: false,
-            callback: () => {
-                this.scene.start("Video");
-            }
-        })
-
-        
     }
 
     
@@ -214,11 +211,9 @@ class Video extends Phaser.Scene {
     preload() {
         this.load.video('video', './assets/video.mp4');
         this.load.image('cloud', './assets/cloudygames.png');
-        this.load.audio('space', './assets/spaceS.mp3');
     }    
     
     create() {
-        this.sound.play('space', { loop: true });
         // Create a camera object
         var camera = this.cameras.main;
 
@@ -239,6 +234,7 @@ class Video extends Phaser.Scene {
             'video',//imagename
         )
         this.videoObject.play(false);
+        this.videoObject.autoplay = true;
         this.imageObject = this.add.image(
             400,//x
             300,//y
