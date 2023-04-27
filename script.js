@@ -12,9 +12,15 @@ class Introduction extends Phaser.Scene {
         this.load.image('fireyellow', 'fireyellow.png');
         this.load.audio('rocket', 'rocketSound.mp3');
         this.load.audio('space', 'spaceS.mp3');
+        this.load.image('sky', 'sky.png');
     }  
     
     create() {
+        // set background image
+        this.bgImage = this.add.image(
+            400,300,'sky',
+        )
+        this.bgImage.setAlpha(0.4);
         // Draws the four rectangles
         this.graphics = this.add.graphics();
         this.graphics.fillStyle(0xff0000, 1); // red
@@ -191,9 +197,15 @@ class Video extends Phaser.Scene {
     preload() {
         this.load.video('video', './assets/video.mp4');
         this.load.image('cloud', './assets/cloudygames.png');
+        this.load.image('sky', './assets/sky.png');
+        
     }    
     
     create() {
+        this.bgImage = this.add.image(
+            400,300,'sky',
+        )
+        this.bgImage.setAlpha(0.4);
         // Create a camera object
         var camera = this.cameras.main;
         // Start the camera at position 800
@@ -253,11 +265,15 @@ class TitleScreen extends Phaser.Scene {
     preload() {
         this.load.path = './assets/';
         this.load.image('moon', 'moon.jpg');
+        this.load.image('sky', 'sky.png');
     }  
     
     create() {
+        this.bgImage = this.add.image(
+            400,300,'sky',
+        )
+        this.bgImage.setAlpha(0.4);
         this.cameras.main.fadeIn(1000);
-
         //create image object 
         this.imageObject = this.add.image(
             280,390,'moon',
@@ -303,7 +319,11 @@ class TitleScreen extends Phaser.Scene {
             alpha: 0,
             duration: 2000,
             delay: 1600,
-            ease: 'Power2'
+            ease: 'Power2',
+            // Fade out effect
+            onComplete: () => {
+                this.cameras.main.fadeOut(2000);
+            }
         });
        
         // Moves to next screen
@@ -324,9 +344,16 @@ class LoadingScreen extends Phaser.Scene {
         super('LoadingScreen');
     }
     
-    preload() {}  
+    preload() {
+        this.load.image('sky', './assets/sky.png');
+    }  
     
     create() {
+        this.bgImage = this.add.image(
+            400,300,'sky',
+        )
+        this.bgImage.setAlpha(0.4);
+        this.cameras.main.fadeIn(1000);
         // Creates a group for the stars
         const starGroup = this.add.group();
         let xCoord = 0;
@@ -398,20 +425,21 @@ class LoadingScreen extends Phaser.Scene {
         }
         this.textObject = this.add.text(
             100, 90,
-            "You,\n\n\t\t\t\tthe ROCKET,\n\nwill be launched into the night sky", //text
+            "You,\n\n\t\t\t\tthe ROCKET,\n\nwill be launched into the night sky.", //text
             {
                 fontFamily: 'CustomFont',
-                color: "#fc5a44",
+                color: "#ffffcc",
                 fontSize: 40,
             } //style
         );
         this.textObject2 = this.add.text(
             100, 320,
-            "You know what you will need to do…\n\nDon’t make us regret choosing you for the mission\n\nYou know what will happen if you mess up", //text
+            "You know what you will need to do…\n\nDon’t make us regret choosing you for the mission.\n\nYou know what will happen if you mess up.", //text
             {
                 fontFamily: 'Merriweather',
                 color: "#ffffff",
-                fontSize: 30
+                fontSize: 30,
+                fontWeight: 'bold'
             } 
         );
         this.textObject.alpha = 0;
@@ -419,12 +447,12 @@ class LoadingScreen extends Phaser.Scene {
         this.tweens.add({
             targets: [this.textObject, this.textObject2],
             alpha: 1,
-            duration: 5000,
+            duration: 3500,
             delay: 3000,
             ease: 'Power2',
             onComplete: () => {
                 this.time.addEvent({
-                    delay: 800,
+                    delay: 4000,
                     loop: false,
                     callback: () => {
                         this.scene.start("Introduction");
@@ -444,7 +472,7 @@ let config = {
     height: 600,
     backgroundColor: 0x000000,
     scene: [Introduction, Video, TitleScreen, LoadingScreen],
-    // scene: [Introduction,Video],
+    // scene: [LoadingScreen],
 }
 let game = new Phaser.Game(config);
 

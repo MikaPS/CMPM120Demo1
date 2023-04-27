@@ -15,6 +15,7 @@ A cinametic animation based on Phaser3 (JavaScript)
     - Fire image: Image by <a href="https://pixabay.com/users/królestwo_nauki-17664295/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6904983">Królestwo_Nauki</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=6904983">Pixabay</a>. Recolored the picture using the mobile app ibisPaint X. I created three versions of the drawing, each with different level of color (yellow, orange, red).  Also, changed to transparent background using the website removebg. <br>
     - Moon picture (I got the picture when I went to an observatory).<br>
     - Logo of game (cloudy games) - I created myself using the Canva website.<br>
+    - Background image - I created myself using the Canva website.<br>
 - **2+ geometric shapes**:<br>
     Three rectangles at the first screen, star shapes in the fourth scene.<br>
 - **1+ logotype**:<br>
